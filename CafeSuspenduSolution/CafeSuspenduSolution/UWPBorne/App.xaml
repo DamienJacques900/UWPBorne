@@ -1,0 +1,25 @@
+﻿<Application
+    x:Class="UWPBorne.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBorne.Converter"
+    xmlns:vm="using:UWPBorne.ViewModel"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+
+        <local:StringFormatConverter x:Key="StringConverter"></local:StringFormatConverter>
+        <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:UWPBorne.ViewModel" />
+
+
+        <DataTemplate x:Key="CafeDescriptionTemplate">
+            <StackPanel Margin="15,0,0,0" Width="200">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="239" TextWrapping="Wrap" Text="{Binding CafeName}"/>
+            </StackPanel>
+        </DataTemplate>
+
+    </Application.Resources>
+
+
+
+</Application>

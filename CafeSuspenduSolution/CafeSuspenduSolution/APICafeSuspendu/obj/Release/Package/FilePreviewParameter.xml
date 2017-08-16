@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="cafeSuspenduAppWeb" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\anton\\Desktop\\MKTIG\\MKT-IG\\CafeSuspenduSolution\\CafeSuspenduSolution\\APICafeSuspendu\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\anton\\Desktop\\MKTIG\\MKT-IG\\CafeSuspenduSolution\\CafeSuspenduSolution\\APICafeSuspendu\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:cafesuspenduserveur.database.windows.net,1433;Initial Catalog=cafeSuspenduBD;User ID=root-cafesuspendu@cafesuspenduserveur;Password=14335Ba5" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\anton\\Desktop\\MKTIG\\MKT-IG\\CafeSuspenduSolution\\CafeSuspenduSolution\\APICafeSuspendu\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

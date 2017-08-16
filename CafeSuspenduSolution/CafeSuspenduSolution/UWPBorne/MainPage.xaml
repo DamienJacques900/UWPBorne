@@ -1,0 +1,140 @@
+﻿<Page
+    x:Class="UWPBorne.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPBorne"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Main}" Height="923.93" Width="1456.161">
+
+    <Page.Resources>
+        <Color x:Key="Color4">#FFEEF280</Color>
+        <Color x:Key="Color6">#FFBF8C4E</Color>
+        <Color x:Key="Color1">#FFA66832</Color>
+        <Color x:Key="Color2">#FFA3D9D9</Color>
+    </Page.Resources>
+    <Page.Background>
+        <SolidColorBrush Color="{StaticResource Color2}"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{StaticResource Color2}"/>
+        </Grid.Background>
+        <TextBlock x:Name="appTitle" HorizontalAlignment="Left" Margin="637,44,0,0" TextWrapping="Wrap" Text="Café suspendu" VerticalAlignment="Top" FontSize="36">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <!-- Remarque : La clé pour la MapControl ne devrait pas être hardcodée -->
+        <Maps:MapControl HorizontalAlignment="Left" Margin="262,135,0,0" VerticalAlignment="Top" Height="331" Width="327" Center="{Binding CafeLocation, Mode=TwoWay}" MapServiceToken="Rf83WiC6MeIGkWVHUdrL~yonkzIvaRZztuP50S4ZDow~AhkF3gVoeDg1l2HBiDhaKYuizJ7GdncC57tHc51Ars5bNR9iX40AW9a-I4t10dKZ" ZoomLevel="18"/>
+        <TextBlock x:Name="informationsLabel" HorizontalAlignment="Left" Margin="1151,128,0,0" TextWrapping="Wrap" Text="Informations sur le café" VerticalAlignment="Top" SelectionChanged="textBlock1_SelectionChanged" FontSize="24">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock x:Name="openingHourTextBlock" HorizontalAlignment="Left" Margin="1151,229,0,0" TextWrapping="Wrap" Text="Heure d'ouverture :"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <TextBlock x:Name="openingHourContent" HorizontalAlignment="Left" Margin="1314,229,-37,0" TextWrapping="Wrap" Text="{Binding OpeningHour, Converter={StaticResource StringConverter}, ConverterParameter='{}{0:00}:{1:00}'}"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205"/>
+
+        <TextBlock x:Name="closingHourTextBlock" HorizontalAlignment="Left" Margin="1151,342,0,0" TextWrapping="Wrap" Text="Heure de fermeture :"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <TextBlock x:Name="closingHourContent" HorizontalAlignment="Left" Margin="1314,342,-37,0" TextWrapping="Wrap" Text="{Binding ClosingHour, Converter={StaticResource StringConverter}, ConverterParameter='{}{0:00}:{1:00}'}"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205"/>
+
+
+        <TextBlock x:Name="streetTextBlock" HorizontalAlignment="Left" Margin="1151,454,0,0" TextWrapping="Wrap" Text="Rue :"  VerticalAlignment="Top" Width="181" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <TextBlock x:Name="streetContent" HorizontalAlignment="Left" Margin="1219,454,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Street}"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205"/>
+
+        <TextBlock x:Name="NumberTextBlock" HorizontalAlignment="Left" Margin="1151,564,0,0" TextWrapping="Wrap" Text="Numéro :"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <TextBlock x:Name="NumberContent" HorizontalAlignment="Left" Margin="1236,564,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Number}"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205"/>
+
+        <TextBlock x:Name="NameBlock" Visibility="{Binding NameBlockVisibility}" HorizontalAlignment="Left" Margin="1151,646,0,0" TextWrapping="Wrap" Text="Nom de réservation :"  VerticalAlignment="Top" Width="163" FontSize="15" Height="52" RenderTransformOrigin="0.432,2.205">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <TextBox x:Name="NameBox" Text="{Binding NameBoxContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding NameBoxVisibility}" HorizontalAlignment="Left" Margin="708,206,0,0"  MaxLength="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="248"/>
+        <!-- action quand la textBox xaml change-->
+
+
+        <Button x:Name="button" Visibility="{Binding BookingButtonVisibility}" IsEnabled="{Binding IsBookingButtonEnabled}" HorizontalAlignment="Left" Margin="843,247,0,0" VerticalAlignment="Top" FontSize="20" Width="113" Height="51" Command="{Binding ReservationCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource Color6}"/>
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="{StaticResource Color4}"/>
+            </Button.Foreground>
+            Réserver
+        </Button>
+
+        <Button x:Name="cancel" Visibility="{Binding CancelButtonVisibility}" IsEnabled="{Binding IsCancelButtonEnabled}" HorizontalAlignment="Left" Margin="708,247,0,0" VerticalAlignment="Top" FontSize="20" Width="113" Height="51" Command="{Binding CancelCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource Color6}"/>
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="{StaticResource Color4}"/>
+            </Button.Foreground>
+            Annuler
+        </Button>
+
+        <Button x:Name="confirm" Visibility="{Binding ConfirmButtonVisibility}" IsEnabled="{Binding IsConfirmButtonEnabled}" HorizontalAlignment="Left" Margin="778,342,0,0" VerticalAlignment="Top" FontSize="20" Width="113" Height="51" Command="{Binding ConfirmCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource Color6}"/>
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="{StaticResource Color4}"/>
+            </Button.Foreground>
+            Confirmer
+        </Button>
+
+        <Button x:Name="refresh"  HorizontalAlignment="Left" Margin="655,862,0,0" VerticalAlignment="Top" FontSize="20" Width="113" Height="51" Command="{Binding RefreshCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource Color6}"/>
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="{StaticResource Color4}"/>
+            </Button.Foreground>
+            Actualiser
+        </Button>
+
+        <ListView SelectedItem="{Binding SelectedItem, Mode=TwoWay}" ItemsSource="{Binding Cafes}" ItemTemplate="{StaticResource CafeDescriptionTemplate}" HorizontalAlignment="Left" Width="239" Margin="0,165,0,133">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="MinHeight" Value="0"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Padding" Value="6,3"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <TextBlock x:Name="cafeList" HorizontalAlignment="Left" Margin="41,128,0,0" TextWrapping="Wrap" Text="Listes des cafés" VerticalAlignment="Top" FontSize="24" SelectionChanged="textBlock2_SelectionChanged">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Color1}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <Image Source="Images/logo.png" x:Name="image" HorizontalAlignment="Left" Height="118" VerticalAlignment="Top" Width="162" Margin="470,16,0,0"/>
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="100" Margin="405,28,0,0" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+</Page>

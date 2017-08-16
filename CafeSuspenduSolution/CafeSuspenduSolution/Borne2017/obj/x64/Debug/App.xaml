@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="Borne2017.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Borne2017.Converter"
+    xmlns:vm="using:Borne2017.ViewModel"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <local:StringFormatConverter x:Key="StringConverter"></local:StringFormatConverter>
+        <vm:ViewModelLocator x:Key="Locator"/>
+    </Application.Resources>
+</Application>
+

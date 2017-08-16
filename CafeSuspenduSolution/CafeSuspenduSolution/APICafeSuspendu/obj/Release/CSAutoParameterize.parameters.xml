@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Chaîne de connexion utilisée dans web.config par l’application pour accéder à la base de données." defaultValue="Data Source=cafesuspenduserveur.database.windows.net;Initial Catalog=cafeSuspenduBD;Integrated Security=False;User ID=root-cafesuspendu;Password=14335Ba5;Connect Timeout=1000;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\anton\\Desktop\\MKTIG\\MKT-IG\\CafeSuspenduSolution\\CafeSuspenduSolution\\APICafeSuspendu\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

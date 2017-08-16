@@ -1,0 +1,1 @@
+D:\Documents\SecondeSession\C#\CafeSuspenduSolution\CafeSuspenduSolution\UWPBorne\UWPBorne.csproj;x64
